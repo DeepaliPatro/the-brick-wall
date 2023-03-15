@@ -4,9 +4,8 @@ const ensureLoggedIn = require('./../middlewares/ensure_logged_in')
 const db = require('./../db')
 
 router.get('/', ensureLoggedIn, (req, res) => {
-    const sql = `SELECT * FROM creations;`
+    const sql = `SELECT creations.*, username FROM creations JOIN users ON creations.user_id = users.id order by creations.time_posted desc;`
     db.query(sql, (err, dbRes) => {
-        // console.log(dbRes.rows);
         const creations = dbRes.rows
         res.render("home", {creations})
     })
@@ -17,16 +16,17 @@ router.get('/creations/new', (req, res) => {
 })
 
 router.get('/creations/:id', (req, res) => {
-    const sql = `SELECT * FROM creations where id = $1;`
+    const sql = `SELECT creations.*, users.username FROM creations JOIN users ON creations.user_id = users.id WHERE creations.id = $1;`
     db.query(sql, [req.params.id], (err, dbRes) => {
         const creation = dbRes.rows[0]
+        console.log(creation);
         res.render("creation_details", {creation})
     })
 })
 
 router.post('/creations', (req, res) => {
-    const sql =`INSERT INTO creations (title, image_url, user_id) VALUES ($1, $2, $3);`
-    db.query(sql, [req.body.title, req.body.image_url, req.session.userId], (err, dbRes) => {
+    const sql =`INSERT INTO creations (title, image_url, about, user_id) VALUES ($1, $2, $3, $4);`
+    db.query(sql, [req.body.title, req.body.image_url, req.body.about, req.session.userId], (err, dbRes) => {
         res.redirect("/");
     })
 

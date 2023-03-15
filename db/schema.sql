@@ -11,8 +11,16 @@ CREATE TABLE creations (
     id SERIAL PRIMARY KEY,
     title TEXT,
     image_url TEXT,
-    plot VARCHAR (200),
+    about VARCHAR (250),
     time_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id INT REFERENCES users (id) ON DELETE CASCADE
 );
 
+CREATE TABLE reviews (
+    id SERIAL PRIMARY KEY,
+    rating INT,
+    comment VARCHAR(200),
+    time_published TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    creation_id INT REFERENCES creations (id) ON DELETE CASCADE,
+    user_id INT REFERENCES users (id) ON DELETE CASCADE
+);

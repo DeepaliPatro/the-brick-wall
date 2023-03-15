@@ -4,8 +4,16 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 const db = require('./../db')
 
-router.get('/users', (req, res) => {
+router.get('/signup', (req, res) => {
     res.render('signup')
+})
+
+router.get('/users/:id', (req, res) => {
+    const sql = `SELECT username, creations.id, title FROM users JOIN creations ON users.id = creations.user_id WHERE users.id = $1;`
+    db.query(sql, [req.params.id], (err, dbRes) => {
+        const creations = dbRes.rows
+        res.render("user_profile", {creations})
+    })
 })
 
 router.post('/users', (req, res) => {

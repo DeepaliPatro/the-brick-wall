@@ -6,6 +6,7 @@
 body{
     font-family: 'Noto Sans Symbols', sans-serif;
     margin: 0;
+    background-color: #f2f4f7;
 }
 header{
     display: flex;
@@ -22,14 +23,13 @@ header img{
 }
 header h1{
     margin: 0;
-    font-size: 50px;
+    font-size: 5vw;
     /* padding: 10px; */
     
 }
 header a{
     text-decoration: none;
     color: white;
-
 }
 header .brand, .user-options{
     display: inline-flex;
@@ -54,12 +54,12 @@ header input{
     border: none;
     background-color: transparent;
     color: white;
-    font-size: 25px;
+    font-size: 2.5vw;
     margin-right: 10px;
 }
 #logout span{
     display: block;
-    font-size: 15px;
+    font-size: 1.5vw;
     padding-top: 10px;
 }
 .ui-cards-wrapper {
@@ -136,4 +136,25 @@ header input{
 }
 .sign-up-in {
     border-top: 1px solid #334fa1;
+}
+.post-it{
+    width: 50%;
+    border: 10px solid #febe32;
+    border-radius: 20px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    text-align: center;
+}
+.post-it label, input, textarea{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.post-it button{
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+#about{
+    height: 50px;
 }

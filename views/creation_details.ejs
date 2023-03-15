@@ -1,11 +1,16 @@
-<h1><%= creation.title%></h1>
+<h1><%= creation.title.toUpperCase() %></h1>
 <img src="<%= creation.image_url%>" alt="">
-
+<p><%= creation.about%></p>
+<h2>by <a href="/users/<%= creation.user_id%>"><%= creation.username %></a></h2>
 <footer>
-    <form action="/creations/<%= creation.id%>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="hidden" value="<%= creation.id%>">
-        <button>Delete</button>
-    </form>
-    <a href="/creations/<%= creation.id %>/edit">Edit</a>
+    <% if(creation.user_id === currentUser.id){ %>
+        <form action="/creations/<%= creation.id%>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" value="<%= creation.id%>">
+            <button>Delete</button>
+        </form>
+        <a href="/creations/<%= creation.id %>/edit">Edit</a>
+    <% } else {%>
+        <a href="/review/new">Review</a>
+    <% } %>
 </footer>

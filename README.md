@@ -5,9 +5,14 @@ A place to showcase your awsome creations using Lego bricks. Get inspired by peo
 - Rate others creations.
 - Edit / delete their own posts.
 - Search posts by keyword / username / difficulty level.
-- Short posts by Date posted, name.
+- Short posts by Date posted
 - Clicking on the post name displays image, title, creator, story/plot, rating.
 - Clicking on user profile / username shows a list of all their posts and possibly a user rating.
+- Check if username already taken, prevent duplicacy
+- change password/forgot password
+- strong password
+- valid email verification
+- user avatar choices
 
 # Technologies used
 CRUD App built using

@@ -4,7 +4,7 @@
             <img src="<%= creation.image_url %>" alt="">
             <div>
                 <h3><a href="/creations/<%= creation.id%>"><%= creation.title.toUpperCase() %></a></h3>
-                <h4><span>by </span><a href=""><%= creation.user_id %></a></h4>
+                <h4><span>by </span><a href=""><%= creation.username %></a></h4>
                 <footer>
                     <span>15 minutes</span>
                     <span>| <%= creation.time_posted.toLocaleDateString() %></span>
