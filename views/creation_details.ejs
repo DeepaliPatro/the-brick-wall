@@ -1,0 +1,11 @@
+<h1><%= creation.title%></h1>
+<img src="<%= creation.image_url%>" alt="">
+
+<footer>
+    <form action="/creations/<%= creation.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" value="<%= creation.id%>">
+        <button>Delete</button>
+    </form>
+    <a href="/creations/<%= creation.id %>/edit">Edit</a>
+</footer>

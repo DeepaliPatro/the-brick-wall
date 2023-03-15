@@ -1,0 +1,15 @@
+<div class="ui-cards-wrapper">
+    <% for(let creation of creations) { %>
+        <div class="card">
+            <img src="<%= creation.image_url %>" alt="">
+            <div>
+                <h3><a href="/creations/<%= creation.id%>"><%= creation.title.toUpperCase() %></a></h3>
+                <h4><span>by </span><a href="">creator</a></h4>
+                <footer>
+                    <span>15 minutes</span>
+                    <span>| March 14, 2023</span>
+                </footer>
+            </div>
+        </div>
+    <% } %>
+</div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://www.dafontfree.net/embed/bGVnbyZkYXRhLzE1My9sLzE4Njk1NS9sZWdvw79oaWN0eXBlLnR0Zg" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header>
+        <h1><a href="/">The Brick Wall</a> </h1>    
+        <div class="user-options">
+            <h3><a href="/creations/new">Share</a></h3>
+            <form action="">
+                <input type="text" placeholder="Search creations">
+            </form>
+            <% if(isLoggedIn()){ %>
+                <form action="/sessions" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button>Logout<span><%= currentUser.username%></span></button>
+                </form>
+            <% } %>
+        </div>
+    </header>
+    
+    <%-body%>
+</body>
+</html>
