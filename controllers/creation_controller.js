@@ -25,8 +25,8 @@ router.get('/creations/:id', (req, res) => {
 })
 
 router.post('/creations', (req, res) => {
-    const sql =`INSERT INTO creations (title, image_url) VALUES ($1, $2);`
-    db.query(sql, [req.body.title, req.body.image_url], (err, dbRes) => {
+    const sql =`INSERT INTO creations (title, image_url, user_id) VALUES ($1, $2, $3);`
+    db.query(sql, [req.body.title, req.body.image_url, req.session.userId], (err, dbRes) => {
         res.redirect("/");
     })
 

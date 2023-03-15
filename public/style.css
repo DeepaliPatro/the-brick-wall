@@ -14,22 +14,54 @@ header{
     /* background-color: #006eaf; */
     background-color: #334fa1;
 }
+header img{
+    width: 80px;
+    height: 80px;
+    margin: auto 10px;
+    border-radius: 5px;
+}
 header h1{
     margin: 0;
+    font-size: 50px;
+    /* padding: 10px; */
+    
 }
 header a{
     text-decoration: none;
     color: white;
 
 }
-header .user-options{
+header .brand, .user-options{
     display: inline-flex;
+    gap: 10px;
 }
-header h3{  
-    margin: 0;
+header h2{  
     text-align: center;
+    margin: auto;
 }
-
+header form {
+    vertical-align: middle;
+    margin: auto;
+}
+header input{
+    width: 230px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    margin-right: 5px;  
+}
+#logout{
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 25px;
+    margin-right: 10px;
+}
+#logout span{
+    display: block;
+    font-size: 15px;
+    padding-top: 10px;
+}
 .ui-cards-wrapper {
     margin: 10px;
     display: grid;
@@ -65,4 +97,43 @@ header h3{
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
+}
+
+.signup-login {
+    width: 300px;
+    font-size: 20px;
+    border: 3px solid #334fa1;
+    border-radius: 15px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    margin: 50px auto;
+    padding: 20px;
+}
+.signup-login input{
+    height: 30px;
+    margin: 0;
+    display: flex;
+    font-size: 20px;
+    width: 100%;
+}
+.signup-login button {
+    /* background-color: green; */
+    color: whitesmoke;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.sign-up-in{
+    margin-top: 10px;
+}
+.sign-up-in p {
+    margin: 0;
+}
+#login{
+    background-color: cornflowerblue;
+}
+#signup{
+    background-color: green;
+}
+.sign-up-in {
+    border-top: 1px solid #334fa1;
 }

@@ -10,16 +10,19 @@
 </head>
 <body>
     <header>
-        <h1><a href="/">The Brick Wall</a> </h1>    
+        <div class="brand">
+            <img src="https://i.etsystatic.com/33490561/r/il/bec86b/3663523366/il_1588xN.3663523366_ox2t.jpg" alt="">
+            <h1><a href="/">The Brick Wall</a> </h1>    
+        </div>
         <div class="user-options">
-            <h3><a href="/creations/new">Share</a></h3>
+            <h2><a href="/creations/new">Share</a></h2>
             <form action="">
-                <input type="text" placeholder="Search creations">
+                <input type="text" placeholder="Search creations" class="search">
             </form>
             <% if(isLoggedIn()){ %>
                 <form action="/sessions" method="post">
                     <input type="hidden" name="_method" value="delete">
-                    <button>Logout<span><%= currentUser.username%></span></button>
+                    <button id="logout">Logout<span><%= currentUser.username%></span></button>
                 </form>
             <% } %>
         </div>
