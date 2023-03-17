@@ -36,7 +36,7 @@ router.get('/creations/:id', (req, res) => {
             } else {
                 const sqlReviews = `SELECT reviews.rating, reviews.comment, reviews.time_published, reviews.reviewer_id, users.username FROM reviews JOIN users ON reviews.reviewer_id = users.id WHERE reviews.creation_id = ${creation.id};`
                 db.query(sqlReviews, (error, results) => {
-                    console.log(results.rows);
+                    // console.log(results.rows);
                     const reviews = results.rows
                     const sqlAvg = `SELECT avg(rating) FROM reviews WHERE creation_id = ${creation.id};`
                     db.query(sqlAvg, (errorAvg, value) => {
@@ -63,10 +63,12 @@ router.get('/creations/:creation_id/edit', (req, res) => {
     })
 })
 
+
+
 router.put('/creations/:creation_id', upload.single("uploadedFile"), (req, res) => {
     const sql = `UPDATE creations SET title = $1, image_url = $2, about = $3 WHERE id = $4;`
+    console.log(req.body.title, req.file.path, req.body.about, req.params.creation_id);
     db.query(sql, [req.body.title, req.file.path, req.body.about, req.params.creation_id], (err, dbRes) => {
-        console.log(req.body.title, req.file.path, req.body.about, req.params.creation_id);
         res.redirect(`/creations/${req.params.creation_id}`)
     })
 })
