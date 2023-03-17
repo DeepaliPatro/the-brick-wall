@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/style.css">
     <link href="https://www.dafontfree.net/embed/bGVnbyZkYXRhLzE1My9sLzE4Njk1NS9sZWdvw79oaWN0eXBlLnR0Zg" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -15,15 +16,19 @@
             <h1><a href="/">The Brick Wall</a> </h1>    
         </div>
         <div class="user-options">
-            <h2><a href="/creations/new">Share</a></h2>
-            <form action="">
-                <input type="text" placeholder="Search creations" class="search">
+            <% if(isLoggedIn()){ %>
+                <h2><a href="/creations/new">Share</a></h2>
+            <% } %>
+            <form action="" class="search">
+                <input type="text" placeholder="Search creations" class="search"><i class="fa fa-search"></i>
             </form>
             <% if(isLoggedIn()){ %>
                 <form action="/sessions" method="post">
                     <input type="hidden" name="_method" value="delete">
                     <button id="logout">Logout<span><%= currentUser.username%></span></button>
                 </form>
+            <% } else {%>
+                <h2><a href="/login">Login</a></h2>
             <% } %>
         </div>
     </header>

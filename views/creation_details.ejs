@@ -1,16 +1,73 @@
-<h1><%= creation.title.toUpperCase() %></h1>
-<img src="<%= creation.image_url%>" alt="">
-<p><%= creation.about%></p>
-<h2>by <a href="/users/<%= creation.user_id%>"><%= creation.username %></a></h2>
-<footer>
-    <% if(creation.user_id === currentUser.id){ %>
-        <form action="/creations/<%= creation.id%>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="hidden" value="<%= creation.id%>">
-            <button>Delete</button>
-        </form>
-        <a href="/creations/<%= creation.id %>/edit">Edit</a>
-    <% } else {%>
-        <a href="/review/new">Review</a>
-    <% } %>
-</footer>
+<div class="creation-details">
+    <main>
+        <div class="review-header">
+            <h1><%= creation.title.toUpperCase() %></h1>
+            <div class="star-rating" title="<%= avgRating *100/5 %>%">
+                <div class="back-stars">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    
+                    <div class="front-stars" style="width: <%= avgRating *100/5 %>%">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+        <img src="<%= creation.image_url%>" alt="">
+        <h2>by <a href="/users/<%= creation.user_id%>"><%= creation.username %></a></h2>
+        <p><%= creation.about%></p>
+
+        <footer>
+            <% if(creation.user_id === currentUser.id){ %>
+                <form action="/creations/<%= creation.id%>" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" value="<%= creation.id%>">
+                    <button>Delete</button>
+                </form>
+                <a href="/creations/<%= creation.id %>/edit"><i class="fa fa-pencil fa-fw"></i>Edit</a>
+            <% } else {%>
+                
+                <a href="/creations/<%= creation.id%>/review/new">Review</a>
+            <% } %>
+        </footer>
+    </main>
+    <aside>
+        <h1>Reviews (<%= reviews.length %>)</h1>
+        <% for(let review of reviews) { %>
+            <div class="review-header">
+                <a href="/users/<%= review.reviewer_id%>"><%= review.username%></a>
+                <!-- <% for(let rating =1; rating <= review.rating; rating++) { %>
+                    <i class="fa fa-star fa-gold"></i>
+                <% } %>
+                <% for(let rating =review.rating+1; rating <= 5; rating++) { %>
+                    <i class="fa fa-star fa-gray"></i>
+                <% } %> -->
+                <div class="star-rating" title="<%= review.rating *100/5 %>%">
+                    <div class="back-stars">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        
+                        <div class="front-stars" style="width: <%= review.rating *100/5 %>%">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+            <p><%= review.comment%></p>
+        <% } %>
+    </aside>
+</div>

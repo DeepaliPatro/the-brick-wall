@@ -1,9 +1,10 @@
-<form action="/creations" method="post" class="post-it">
+<form action="/creations" method="post" enctype="multipart/form-data" class="post-it">
+    <h2>Share New Creation</h2>
     <label for="">Title</label>
     <input type="text" name="title">
-    <label for="">Image URL</label>
-    <input type="text" name="image_url">
     <label for="">About</label>
     <textarea name="about" cols="40" rows="5"></textarea>
+    <input type="file" name="uploadedFile" />
+    <!-- <input type="submit" value="Post" /> -->
     <button>Post</button>
 </form>

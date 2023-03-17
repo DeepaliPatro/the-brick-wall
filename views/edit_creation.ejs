@@ -1,9 +1,10 @@
-<h1>Edit Creation</h1>
-<form action="/creations/<%= creation.id %>" method="post">
+<form action="/creations/<%= creation.id %>" method="post" enctype="multipart/form-data" class="post-it">
+    <h2>Edit Creation</h2>
     <input type="hidden" name="_method" value="put">
     <label for="">Title</label>
-    <input type="text" name="title" value="<%= creation.title %>"">
-    <label for="">Image URL</label>
-    <input type="text" name="image_url" value="<%= creation.image_url %>"">
-    <button>Submit</button>
+    <input type="text" name="title" value="<%= creation.title %>">
+    <label for="">About</label>
+    <textarea name="about" cols="40" rows="5"><%= creation.about %></textarea>
+    <input type="file" name="uploadedFile" />
+    <button>Post</button>
 </form>

@@ -1,10 +1,30 @@
 <div class="ui-cards-wrapper">
     <% for(let creation of creations) { %>
         <div class="card">
-            <img src="<%= creation.image_url %>" alt="">
+            <a href="/creations/<%= creation.id%>"><img src="<%= creation.image_url %>" alt=""></a>
             <div>
-                <h3><a href="/creations/<%= creation.id%>"><%= creation.title.toUpperCase() %></a></h3>
-                <h4><span>by </span><a href=""><%= creation.username %></a></h4>
+                <div class="card-header">
+                    <h3><a href="/creations/<%= creation.id%>"><%= creation.title.toUpperCase()%></a></h3>
+
+                    <div class="star-rating" title="<%= creation.avg *100/5 %>%">
+                        <div class="back-stars">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            
+                            <div class="front-stars" style="width: <%= creation.avg *100/5 %>%">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <h4><span>by </span><a href="/users/<%= creation.user_id%>"><%= creation.username %></a></h4>
                 <footer>
                     <span>15 minutes</span>
                     <span>| <%= creation.time_posted.toLocaleDateString() %></span>
