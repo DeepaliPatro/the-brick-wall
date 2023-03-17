@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
-const port = 8080
+const port = process.env.PORT || 8080
 const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
 const logger = require('./middlewares/logger')
 const methodOverride = require('./middlewares/method_override')
 const creationController = require('./controllers/creation_controller')
@@ -21,12 +22,15 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride)
 app.use(    
     session({
-        secret: "mistyrose",
+        cookie: { maxAge: 86400000 },
+        store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+        }),
+        secret: process.env.SESSION_SECRET || "mistyrose",
         resave: false,
         saveUninitialized: true
     })
-    )
-
+)
 
 app.use(setCurrentUser)
 app.use(viewHelpers)

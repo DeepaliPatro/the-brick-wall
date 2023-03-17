@@ -1,6 +1,12 @@
-const {Pool} = require('pg')
+const { Pool } = require("pg")
 
-db = new Pool({
+const config = {
+  dev: {
     database: "thebrickwall",
-})
-module.exports = db
+  },
+  prod: {
+    connectionString: process.env.DATABASE_URL,
+  },
+}
+
+module.exports = new Pool(process.env.DATABASE_URL ? config.prod : config.dev)
