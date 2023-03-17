@@ -1,6 +1,7 @@
-<form action="/creations/<%= creation.id %>" method="post" enctype="multipart/form-data" class="post-it">
+<form action="/creations/<%= creation.id %>" method="post" class="post-it">
     <h2>Edit Creation</h2>
-    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="_method" value="put" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<%= creation.id %>" />
     <label for="">Title</label>
     <input type="text" name="title" value="<%= creation.title %>">
     <label for="">About</label>

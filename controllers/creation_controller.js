@@ -64,8 +64,9 @@ router.get('/creations/:creation_id/edit', (req, res) => {
 })
 
 router.put('/creations/:creation_id', upload.single("uploadedFile"), (req, res) => {
-    const sql = `UPDATE creations set title = $1, image_url = $2, about=$3 WHERE id = $4;`
+    const sql = `UPDATE creations SET title = $1, image_url = $2, about = $3 WHERE id = $4;`
     db.query(sql, [req.body.title, req.file.path, req.body.about, req.params.creation_id], (err, dbRes) => {
+        console.log(req.body.title, req.file.path, req.body.about, req.params.creation_id);
         res.redirect(`/creations/${req.params.creation_id}`)
     })
 })

@@ -9,7 +9,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/users/:id', (req, res) => {
-    const sql = `SELECT username, creations.id, title FROM users JOIN creations ON users.id = creations.user_id WHERE users.id = $1;`
+    const sql = `SELECT users.username, users.about_me, creations.id, creations.title FROM users JOIN creations ON users.id = creations.user_id WHERE users.id = $1;`
     db.query(sql, [req.params.id], (err, dbRes) => {
         const creations = dbRes.rows
         res.render("user_profile", {creations})
@@ -31,8 +31,8 @@ router.post('/users', (req, res) => {
             bcrypt.compare(req.body.confirm_password, digestedPassword, function(errro, result) {
                 if(result){
                     // Store hash in your password DB.
-                    const sql = `INSERT INTO users (username, email, password_digest) VALUES ($1, $2, $3) returning id;`
-                    db.query(sql, [req.body.username, req.body.email, digestedPassword], (err, dbRes) => {
+                    const sql = `INSERT INTO users (username, email, password_digest, about_me) VALUES ($1, $2, $3, $4) returning id;`
+                    db.query(sql, [req.body.username, req.body.email, digestedPassword, req.body.about_me], (err, dbRes) => {
                         if(err) {
                             console.log(err);
                         } else {

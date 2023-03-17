@@ -1,6 +1,10 @@
-<h1><%= creations[0].username%></h1>
-<ul>
-    <% for(let creation of creations){ %>
-        <li><a href="/creations/<%= creation.id%>"><%= creation.title.toUpperCase() %></a></li>
-    <% } %>
-</ul>
+<div class="user-profile">
+    <h1><%= creations[0].username%></h1>
+    <p><%= creations[0].about_me%></p>
+    <h3>Please view my creations here and leave me a review:</h3>
+    <ul>
+        <% for(let creation of creations){ %>
+            <li><a href="/creations/<%= creation.id%>"><%= creation.title.toUpperCase() %></a></li>
+        <% } %>
+    </ul>
+</div>
