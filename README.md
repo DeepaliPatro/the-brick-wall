@@ -33,7 +33,3 @@ CRUD App built using
 - CSS
 - Javascript (Node Js and Express JS)
 - PostgreSQL
-
-# Plan
-![Tables](./images/Tables.png)
-![Tables](./images/signup.png)
