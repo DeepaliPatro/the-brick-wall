@@ -24,9 +24,6 @@ Check it out [here](https://thebrickwall.onrender.com)
 > valid email verification 
 > user avatar choices
 
-> ## To fix:
-> edit post not working..going to the post route
-
 # Technologies used
 CRUD App built using
 - HTML
